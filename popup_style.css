@@ -1,0 +1,146 @@
+/* Buttons */
+.button {
+    margin-bottom: 4px;
+    padding: 8px 12px;
+    border: 1px solid #007bff; /* Bootstrap primary blue */
+    border-radius: 4px;
+    background: #007bff;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+.button:focus {
+    outline: none;
+}
+.button:hover {
+    background: #0056b3; /* Darker blue for hover */
+}
+.button--success {
+    border: 1px solid #28a745; /* Bootstrap success green */
+    background: #28a745;
+}
+.button--success:hover {
+    background: #218838; /* Darker green */
+}
+.button--error {
+    border: 1px solid #dc3545; /* Bootstrap danger red */
+    background: #dc3545;
+}
+.button--error:hover {
+    background: #c82333; /* Darker red */
+}
+.button--warning {
+    border: 1px solid #dc3545; /* Use red for delete confirmation */
+    background: #dc3545;
+}
+.button--warning:hover {
+    background: #c82333;
+}
+
+/* Popups */
+.popup {
+    display: none;
+}
+.popup--visible {
+    display: block;
+}
+.popup__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.popup--visible .popup__background {
+    opacity: 1;
+}
+.popup__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10001;
+    min-width: 280px; /* Reduced for mobile */
+    max-width: 90%; /* Responsive */
+    padding: 20px 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.popup--visible .popup__content {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+.popup--icon .popup__content {
+    padding-top: 100px;
+}
+.popup--icon .popup__content:before,
+.popup--icon .popup__content:after {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    height: 60px;
+    width: 60px;
+}
+.popup--icon .popup__content:before {
+    content: '';
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    transform: translateX(-50%) scale(1, 0);
+    opacity: 0;
+    transition: transform 0.3s 0.15s, opacity 0.3s 0.15s;
+}
+.popup--icon .popup__content:after {
+    content: '\2713'; /* Checkmark */
+    line-height: 60px;
+    font-size: 30px;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    transition: transform 0.3s 0.3s, opacity 0.3s 0.3s;
+}
+.popup--visible.popup--icon .popup__content:before {
+    transform: translateX(-50%) scale(1, 1);
+    opacity: 1;
+}
+.popup--visible.popup--icon .popup__content:after {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+.-success.popup--icon .popup__content:before {
+    border-color: #28a745; /* Bootstrap green */
+}
+.-success.popup--icon .popup__content:after {
+    content: '\2713';
+    color: #28a745;
+}
+.-error.popup--icon .popup__content:before {
+    border-color: #dc3545; /* Bootstrap red */
+}
+.-error.popup--icon .popup__content:after {
+    content: '\2717';
+    color: #dc3545;
+}
+.-question.popup--icon .popup__content:before {
+    border-color: #dc3545; /* Red for delete */
+}
+.-question.popup--icon .popup__content:after {
+    content: '?';
+    color: #dc3545;
+}
+.popup__content__title {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 500; /* Bolder for readability */
+    color: #333;
+}
